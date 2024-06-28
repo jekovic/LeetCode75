@@ -6,13 +6,12 @@ public:
         vector<bool> v(rooms.size(), false);
         while(!q.empty()) {
             int x = q.front();
+            q.pop();
             v[x] = true;
             for(int a : rooms[x]) {
                 if(!v[a])
                     q.push(a);
             }
-            q.pop();
-
         }
         for(int i=0; i != v.size(); i++) {
             if(!v[i]) return false;
