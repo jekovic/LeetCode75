@@ -15,18 +15,17 @@ public:
         
         priority_queue<int, vector<int>, greater<int>> pq;
         for(int i=0; i<v.size(); i++) {
-            auto temp = v[i];
-            sum += nums1[temp.second];
-            pq.push(nums1[temp.second]);
+            const auto& [a,b] = v[i];
+            sum += nums1[b];
+            pq.push(nums1[b]);
 
-            if(pq.size() == k) res = max(res, sum*temp.first);
+            if(pq.size() == k) res = max(res, sum*a);
 
             if(pq.size() > k - 1) {
                 sum -= pq.top();
                 pq.pop();
             }
         }
-
 
         return res;
     }
